@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="silhouette">
+    <meta name="description" content="a simple mindmap">
+    <meta name="keywords" content="mindmap">
+    <title>思维导图</title>
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/package/vis.min.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<!--顶部导航栏,就是工具栏的放置-->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <!--工具栏容器-->
+    <div class="container-fluid">
+        <!--工具栏头部-->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"><i class="fa fa-cog fa-spin"></i> MindMap <i class="fa fa-cog fa-spin"></i></a>
+        </div>
+        <!--工具栏内容-->
+        <div class="collapse navbar-collapse">
+
+            <!--左边工具栏:对节点的操作-->
+            <ul class="nav navbar-nav">
+
+                <!--基本功能-->
+                <li class="dropdown" id="basic-operation">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">功能 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <!--添加节点-->
+                            <a id="node-add" href="#" onclick="addNodeResponse()"><span
+                                    class="glyphicon glyphicon-plus"></span> 添加节点</a>
+                        </li>
+                        <li>
+                            <!--删除节点-->
+                            <a id="node-delete" href="#" onclick="deleteNodeResponse()"><span
+                                    class="glyphicon glyphicon-remove"></span> 删除节点</a>
+                        </li>
+                        <li>
+                            <!--复制-->
+                            <a id="node-copy" href="#" onclick="copyNodeResponse()"><span
+                                    class="glyphicon glyphicon-copy"></span> 复制节点</a>
+                        </li>
+                        <li>
+                            <!--剪切-->
+                            <a id="node-cut" href="#" onclick="cutNodeResponse()"><span
+                                    class="glyphicon glyphicon-scissors"></span> 剪切节点</a>
+                        </li>
+                        <li>
+                            <!--粘贴-->
+                            <a id="node-paste" href="#" onclick="pasteNodeResponse()"><span
+                                    class="glyphicon glyphicon-paste"></span> 粘贴节点</a>
+                        </li>
+                        <li>
+                            <!--生成文件-->
+                            <a id="json-file-generate" href="#" onclick="generateJsonFileResponse()"><span
+                                    class="glyphicon glyphicon-floppy-disk"></span> 生成文件</a>
+                        </li>
+                        <li>
+                            <!--初始化-->
+                            <a id="initialize" href="#" onclick="initializeResponse()"><span
+                                    class="glyphicon glyphicon-refresh"></span> 初始化</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!--需要文本输入的操作-->
+                <li class="dropdown" id="edit-operation">
+                    <a href="#" id="edit-dropdown-toggle" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                       aria-haspopup="true"
+                       aria-expanded="false">编辑 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <!--todo:完善-->
+                        <li>
+                            <!--编辑内容-->
+                            <form class="navbar-form" autocomplete="off">
+                                <div class="form-group">
+                                    <label for="node-name">修改内容</label>
+                                    <input type="text" class="form-control" id="node-name" placeholder="内容">
+                                </div>
+                                <button type="button" class="btn btn-default" onclick="editNameResponse()">
+                                    <span class="glyphicon glyphicon-edit"></span> 修改
+                                </button>
+                            </form>
+                        </li>
+                        <li>
+                            <!--设置链接-->
+                            <form class="navbar-form" autocomplete="off">
+                                <div class="form-group">
+                                    <label for="node-link">设置链接</label>
+                                    <input type="text" class="form-control" id="node-link" placeholder="链接url">
+                                </div>
+                                <button type="button" class="btn btn-default" onclick="setLinkResponse()">
+                                    <span class="glyphicon glyphicon-link"></span> 设置
+                                </button>
+                            </form>
+                        </li>
+                        <li>
+                            <!--添加备注-->
+                            <form class="navbar-form" autocomplete="off">
+                                <div class="form-group">
+                                    <label for="node-comment">添加备注</label>
+                                    <input type="text" class="form-control" id="node-comment" placeholder="备注">
+                                </div>
+                                <button type="button" class="btn btn-default" onclick="addCommentResponse()">
+                                    <span class="glyphicon glyphicon-comment"></span> 添加
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+
+                <!--设置图标-->
+                <li class="dropdown" id="icon-setting">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">图标 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" id="&#xf05d" onclick="setIconResponse(this)"><i
+                                class="fa fa-check-circle-o"></i></a></li>
+                        <li><a href="#" id="&#xf05e" onclick="setIconResponse(this)"><i class="fa fa-ban"></i></a></li>
+                        <li><a href="#" id="&#xf06a" onclick="setIconResponse(this)"><i
+                                class="fa fa-exclamation-circle"></i></a></li>
+                        <li><a href="#" id="&#xf059" onclick="setIconResponse(this)"><i
+                                class="fa fa-question-circle"></i></a></li>
+                        <li><a href="#" id="&#xf004" onclick="setIconResponse(this)"><i class="fa fa-heart"></i></a>
+                        </li>
+                        <li><a href="#" id="&#xf005" onclick="setIconResponse(this)"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#" id="&#xf069" onclick="setIconResponse(this)"><i class="fa fa-asterisk"></i></a>
+                        </li>
+                        <li><a href="#" id="&#xf055" onclick="setIconResponse(this)"><i
+                                class="fa fa-plus-circle"></i></a></li>
+                        <li><a href="#" id="&#xf056" onclick="setIconResponse(this)"><i class="fa fa-minus-circle"></i></a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#" id="none" onclick="setIconResponse(this)">无图标</a></li>
+                    </ul>
+                </li>
+
+                <!--修改风格-->
+                <li class="dropdown" id="style-setting">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">风格 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" id="ellipse" onclick="setStyleResponse(this)">椭圆</a></li>
+                        <li><a href="#" id="box" onclick="setStyleResponse(this)">圆角矩形</a></li>
+                        <li><a href="#" id="dot" onclick="setStyleResponse(this)">圆形</a></li>
+                        <li><a href="#" id="diamond" onclick="setStyleResponse(this)">菱形</a></li>
+                        <li><a href="#" id="star" onclick="setStyleResponse(this)">星形</a></li>
+                        <li><a href="#" id="triangle" onclick="setStyleResponse(this)">三角形</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#" id="default" onclick="setStyleResponse(this)">默认风格</a></li>
+                    </ul>
+                </li>
+
+                <!--设置外框-->
+                <li class="dropdown" id="border-setting">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">外框 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" id="long-dash" onclick="setBorderResponse(this)">长虚线框</a></li>
+                        <li><a href="#" id="short-dash" onclick="setBorderResponse(this)">短虚线框</a></li>
+                        <li><a href="#" id="line" onclick="setBorderResponse(this)">实线外框</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#" onclick="setBorderResponse(this)">默认外框</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!--右边工具栏:对文件的操作-->
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <!--下载到本地-->
+                    <form class="navbar-form">
+                        <a id="json-file-download" class="btn btn-success" href="#" style="display: none">
+                            <span class="glyphicon glyphicon-save"></span> 下载
+                        </a>
+                    </form>
+                </li>
+
+                <li>
+                    <!--上传本地文件-->
+                    <form class="navbar-form">
+                        <label for="json-file-upload" class="btn btn-default">
+                            <span class="glyphicon glyphicon-open"></span> 上传
+                        </label>
+                        <!--onchange事件只在内容变化时才触发，若上传相同的文件不会再次触发-->
+                        <!--所以需要每次点击时先把原来的内容清除-->
+                        <input id="json-file-upload" type="file" accept="application/json" style="display: none"
+                               onclick="uploadClickResponse()" onchange="uploadJsonFileResponse()">
+                    </form>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<!--主页面-->
+<div id="main" class="container-fluid">
+    <!--思维导图生成区域-->
+    <div id="mindmap-canvas">
+    </div>
+
+    <!--批注显示区域-->
+    <div id="node-remark-area">
+        <form autocomplete="off">
+            <label id="node-remark-label" for="node-remark">
+                <a class="btn btn-default" onclick="editRemarkResponse()">
+                    <span class="glyphicon glyphicon-pencil"></span> 修改批注
+                </a>
+            </label>
+            <textarea id="node-remark"></textarea>
+        </form>
+    </div>
+</div>
+
+<!--尾部声明-->
+<footer>
+    <p>Written by: Silhouette</p>
+    <p>Github: <a href="https://github.com/fourson">fourson</a></p>
+</footer>
+
+<script src="js/package/jquery-3.0.0/jquery-3.0.0.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="js/package/visjs/vis.min.js"></script>
+
+<script src="js/model.js"></script>
+<script src="js/tools.js"></script>
+<script src="js/operation.js"></script>
+<script src="js/interface.js"></script>
+<script src="js/kits.js"></script>
+<script src="js/event.js"></script>
+<script src="js/view.js"></script>
+<script src="js/response.js"></script>
+<script src="js/init.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,191 @@
+{
+  "name": "我TM就是个根",
+  "link": null,
+  "comment": null,
+  "style": "default",
+  "icon": "none",
+  "border": "default",
+  "id": 0,
+  "layer": 0,
+  "children": [
+    {
+      "name": "new node",
+      "link": null,
+      "comment": null,
+      "style": "default",
+      "icon": "none",
+      "border": "default",
+      "id": 2,
+      "layer": 1,
+      "children": [
+        {
+          "name": "new node",
+          "link": null,
+          "comment": null,
+          "style": "default",
+          "icon": "none",
+          "border": "default",
+          "id": 5,
+          "layer": 2,
+          "children": [
+            {
+              "name": "new node",
+              "link": null,
+              "comment": null,
+              "style": "default",
+              "icon": "none",
+              "border": "default",
+              "id": 10,
+              "layer": 3,
+              "children": [
+                {
+                  "name": "new node",
+                  "link": null,
+                  "comment": null,
+                  "style": "default",
+                  "icon": "none",
+                  "border": "default",
+                  "id": 12,
+                  "layer": 4,
+                  "children": [],
+                  "parentId": 10
+                }
+              ],
+              "parentId": 5
+            }
+          ],
+          "parentId": 2
+        },
+        {
+          "name": "new node",
+          "link": null,
+          "comment": null,
+          "style": "default",
+          "icon": "none",
+          "border": "default",
+          "id": 7,
+          "layer": 2,
+          "children": [
+            {
+              "name": "new node",
+              "link": null,
+              "comment": null,
+              "style": "default",
+              "icon": "none",
+              "border": "default",
+              "id": 9,
+              "layer": 3,
+              "children": [
+                {
+                  "name": "new node",
+                  "link": null,
+                  "comment": null,
+                  "style": "default",
+                  "icon": "none",
+                  "border": "default",
+                  "id": 11,
+                  "layer": 4,
+                  "children": [],
+                  "parentId": 9
+                }
+              ],
+              "parentId": 7
+            }
+          ],
+          "parentId": 2
+        }
+      ],
+      "parentId": 0
+    },
+    {
+      "name": "new node",
+      "link": null,
+      "comment": null,
+      "style": "default",
+      "icon": "none",
+      "border": "default",
+      "id": 3,
+      "layer": 1,
+      "children": [
+        {
+          "name": "new node",
+          "link": null,
+          "comment": null,
+          "style": "default",
+          "icon": "none",
+          "border": "default",
+          "id": 6,
+          "layer": 2,
+          "children": [
+            {
+              "name": "new node",
+              "link": null,
+              "comment": null,
+              "style": "default",
+              "icon": "none",
+              "border": "default",
+              "id": 13,
+              "layer": 3,
+              "children": [
+                {
+                  "name": "new node",
+                  "link": null,
+                  "comment": null,
+                  "style": "default",
+                  "icon": "none",
+                  "border": "default",
+                  "id": 15,
+                  "layer": 4,
+                  "children": [],
+                  "parentId": 13
+                }
+              ],
+              "parentId": 6
+            }
+          ],
+          "parentId": 3
+        },
+        {
+          "name": "new node",
+          "link": null,
+          "comment": null,
+          "style": "default",
+          "icon": "none",
+          "border": "default",
+          "id": 8,
+          "layer": 2,
+          "children": [
+            {
+              "name": "new node",
+              "link": null,
+              "comment": null,
+              "style": "default",
+              "icon": "none",
+              "border": "default",
+              "id": 14,
+              "layer": 3,
+              "children": [
+                {
+                  "name": "new node",
+                  "link": null,
+                  "comment": null,
+                  "style": "default",
+                  "icon": "none",
+                  "border": "default",
+                  "id": 16,
+                  "layer": 4,
+                  "children": [],
+                  "parentId": 14
+                }
+              ],
+              "parentId": 8
+            }
+          ],
+          "parentId": 3
+        }
+      ],
+      "parentId": 0
+    }
+  ],
+  "parentId": null
+}

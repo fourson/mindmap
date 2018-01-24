@@ -1,0 +1,36 @@
+body {
+    padding-top: 70px;
+}
+
+#mindmap-canvas{
+    border: solid #FA8072;
+    text-align: center;
+    font-family: "DejaVu Sans Mono","Fira Code",sans-serif;
+    height: 1000px;
+    width: 1150px;
+    float: left;
+}
+
+#node-remark-area{
+    border: dotted skyblue;
+    text-align: center;
+    font-family: "DejaVu Sans Mono","Fira Code",sans-serif;
+    height: 1000px;
+    width: 150px;
+    float: left;
+}
+
+#node-remark-label{
+    padding-top: 3px;
+}
+
+#node-remark{
+    width: 130px;
+    height: 950px;
+}
+
+footer{
+    padding-top: 10px;
+    text-align: center;
+    font-family: "DejaVu Sans Mono","Fira Code",sans-serif;
+}
